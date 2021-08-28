@@ -7,9 +7,15 @@ use App\Http\Controllers\Backend\AdminProfileController;
 
 
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
 });
+
+
 
 Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 	Route::get('/login', [AdminController::class, 'loginForm']);
@@ -43,3 +49,10 @@ Route::get('/admin/profile/edit', [AdminProfileController::class, 'AdminProfileE
 
 // admin profile edit
 Route::post('/admin/profile/update', [AdminProfileController::class, 'AdminProfileUpdate'])->name('admin.profile.store');
+
+// Admin Password change  
+Route::get('/admin/change/password', [AdminProfileController::class, 'AdminChnagePassword'])->name('admin.change.password');
+
+
+// Admin Password Update  
+Route::post('/admin/update/password', [AdminProfileController::class, 'AdminUpdatePassword'])->name('admin.update.password');
