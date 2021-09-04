@@ -5,6 +5,8 @@ use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Backend\AdminProfileController;
 
+use App\Http\Controllers\Frontend\IndexController;
+
 
 
 // Route::get('/', function () {
@@ -56,3 +58,26 @@ Route::get('/admin/change/password', [AdminProfileController::class, 'AdminChnag
 
 // Admin Password Update  
 Route::post('/admin/update/password', [AdminProfileController::class, 'AdminUpdatePassword'])->name('admin.update.password');
+
+
+
+// ############################ User Route All Route ################################
+Route::get('/', [IndexController::class, 'index']);
+// User Logout Route
+Route::get('/user/logout', [IndexController::class, 'UserLogout'])->name('user.logout');
+
+
+// ############################ End User Route All Route ################################
+
+
+
+
+
+
+
+// User Frontend Route
+
+// Route::get('/user/logout', [IndexController::class, 'UserLogout'])->name('user.logout');
+// Route::get('/user/profile', [IndexController::class, 'UserProfileView'])->name('user.profile.view');
+
+
