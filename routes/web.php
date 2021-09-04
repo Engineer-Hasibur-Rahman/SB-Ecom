@@ -7,6 +7,8 @@ use App\Http\Controllers\Backend\AdminProfileController;
 
 use App\Http\Controllers\Frontend\IndexController;
 
+use App\Models\User;
+
 
 
 // Route::get('/', function () {
@@ -34,7 +36,11 @@ Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', f
 
 // User
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+
+    $id = Auth::user()->id;
+    $user = User::find($id);
+
+    return view('dashboard', compact('user'));
 })->name('dashboard');
 
 
@@ -61,23 +67,48 @@ Route::post('/admin/update/password', [AdminProfileController::class, 'AdminUpda
 
 
 
+
+// Admin Brand All Route Group Start
+
+Route::prefix('brand')->group(function () {
+
+   Route::get('/view', [BrandController::class, 'BarndView'])->name('brand.view'); 
+    
+});
+
+// Admin Brand All Route Group End
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ############################ User Route All Route ################################
 Route::get('/', [IndexController::class, 'index']);
 // User Logout Route
 Route::get('/user/logout', [IndexController::class, 'UserLogout'])->name('user.logout');
 
+// User Profile Update
+Route::get('/user/profile/update', [IndexController::class, 'UserProfileUpdate'])->name('user.profile.update');
+
+// User Profile Update
+Route::post('/user/profile/store', [IndexController::class, 'UserProfileStore'])->name('user.profile.store');
+
+
+// User Change password
+Route::get('/user/password', [IndexController::class, 'UserChangePassword'])->name('user.change.password');
+
+// user password chnage
+Route::post('/user/password/update', [IndexController::class, 'UserPasswordUpdate'])->name('user.password.update');
 
 // ############################ End User Route All Route ################################
 
-
-
-
-
-
-
-// User Frontend Route
-
-// Route::get('/user/logout', [IndexController::class, 'UserLogout'])->name('user.logout');
-// Route::get('/user/profile', [IndexController::class, 'UserProfileView'])->name('user.profile.view');
 
 

@@ -9,15 +9,16 @@
 
         <div class="col-lg-2">
 
-               <img class="rounded-circle" src="{{  (!empty($adminProfile->profile_photo_path))? url('upload/admin_images/' . 
-               $adminProfile->profile_photo_path):url('upload/avatar-1.png') }}" alt="User Avatar">
+               <img class="rounded-circle" src="{{  (!empty($user->profile_photo_path))? url('upload/users_images/' . 
+               $user->profile_photo_path):url('upload/avatar-1.png') }}" alt="User Avatar" height="150px" weight="150px">
 
                <br> <br>
 
                 <ul>
                     <li><a href="{{ url('/') }}"  class="btn btn-success btn-sm btn-block" >Home</a></li>
-                    <li><a href="#"  class="btn btn-info btn-sm btn-block" >Profile</a></li>
-                    <li><a href="#"  class="btn btn-info btn-sm btn-block" >Update Profile</a></li>
+                    <li><a href="{{ route('dashboard') }}"  class="btn btn-info btn-sm btn-block" >Profile</a></li>
+                    <li><a href="{{ route('user.profile.update') }}"  class="btn btn-info btn-sm btn-block" >Update Profile</a></li>
+                    <li><a href="{{ route('user.change.password') }}" class="btn btn-danger btn-sm btn-block">Change Password</a></li> 
                     <li><a href="{{ route('user.logout') }}" class="btn btn-danger btn-sm btn-block">Logout</a></li>  
 
                 </ul>
@@ -28,6 +29,7 @@
      
         <div class="col-lg-10">
 
+          <h2 style="text-align: center"> Welcome To Shop Now <br> <strong> {{ Auth::user()->name }} </strong></h2>  
 
         </div>
 
