@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\BrandController;
 
 use App\Http\Controllers\Frontend\IndexController;
 
@@ -69,10 +70,12 @@ Route::post('/admin/update/password', [AdminProfileController::class, 'AdminUpda
 
 
 // Admin Brand All Route Group Start
-
 Route::prefix('brand')->group(function () {
 
-   Route::get('/view', [BrandController::class, 'BarndView'])->name('brand.view'); 
+   Route::get('/view', [BrandController::class, 'BrandView'])->name('all.brand'); 
+
+   Route::post('/add', [BrandController::class, 'BrandStore'])->name('brand.add'); 
+
     
 });
 
