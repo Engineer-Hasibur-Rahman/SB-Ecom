@@ -15,7 +15,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title"> All Brands</h3>
+				  <h3 class="box-title"> All Category</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -24,15 +24,15 @@
 						<thead>
 							<tr>
 							
-								<th>Brand Name</th>
-								<th>Brand Img</th>
+								<th>Category Icon</th>
+							    <th>Category Name</th>
 								<th>Action</th>
 							
 							</tr>
 						</thead>
 						<tbody>
 
-							@foreach ($brands as $item)
+						{{-- 	@foreach ($brands as $item)
 							<tr>					
 
 								
@@ -55,7 +55,7 @@
 														
 							</tr>
 
-								@endforeach	
+								@endforeach	 --}}
 
 						</tbody>
 					  </table>
@@ -75,43 +75,47 @@
 			<div class="col-4">
 			<div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Brand Add</h3>
+				  <h3 class="box-title">Category Add</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
     
 					    
-             <form action= "{{ route('brand.add')}}" method="POST" enctype="multipart/form-data" >
+             <form action= "{{  route('category.store') }}" method="POST" enctype="multipart/form-data" >
 				  @csrf
 
-              <div class="form-group">
-	               <label>Brand Name</label>
-                   <input type="text"  name="brand_name" class="form-control" >
-          
 
 
-                   @error('brand_name')
-                     
-                       <strong style="color: red">{{ $message }}</strong>	
-                      
-                   @enderror
 
+				   <div class="form-group" >
+                   	<label>Category Icon</label>
+	                		<input type="text"  name="category_icon" class="form-control" > 
 
-	           </div>
-
-                   <div class="form-group" >
-                   	<label>Brand Img</label>
-	                		<input type="file" id="image" name="brand_image" class="form-control" > 
-
-	                		@error('brand_image')
+	                		@error('category_icon')
  						  <strong style="color: red">{{ $message }}</strong>	
 	                		@enderror
 
 	               </div>
 
 
+
+		              <div class="form-group">
+			               <label>Category Name</label>
+		                   <input type="text"  name="category_name" class="form-control" >
+		          
+		                   @error('category_name')
+		                     
+		                       <strong style="color: red">{{ $message }}</strong>	
+		                      
+		                   @enderror
+
+			           </div>
+
+                  
+
+
                        <div class="text-xs-right">
-                            <input type="submit" class="btn btn-rounded btn-info"  value="Add Brand" >
+                            <input type="submit" class="btn btn-rounded btn-info"  value="Add Category" >
                         </div>
 
 				</form> 

@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Backend\AdminProfileController;
-use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\BrandController; 
+use App\Http\Controllers\Backend\CategoryController; 
 
 use App\Http\Controllers\Frontend\IndexController;
 
@@ -76,12 +77,35 @@ Route::prefix('brand')->group(function () {
 
    Route::post('/add', [BrandController::class, 'BrandStore'])->name('brand.add'); 
 
+   Route::get('/edit/{id}', [BrandController::class, 'BrandEdit'])->name('edit.brand'); 
+
+    Route::post('/update', [BrandController::class, 'BrandUpdate'])->name('update.brand'); 
+
+   Route::get('/delete/{id}', [BrandController::class, 'BrandDelete'])->name('delete.brand'); 
     
 });
 
-// Admin Brand All Route Group End
+// Admin Brand All Route Group End all.category
+ 
 
 
+
+// Admin Brand All Route Group Start
+Route::prefix('category')->group(function () {
+
+   Route::get('/view', [CategoryController::class, 'CategoryView'])->name('all.category'); 
+
+   Route::post('/add', [CategoryController::class, 'CategoryStore'])->name('category.store'); 
+
+   // Route::get('/edit/{id}', [BrandController::class, 'BrandEdit'])->name('edit.brand'); 
+
+   //  Route::post('/update', [BrandController::class, 'BrandUpdate'])->name('update.brand'); 
+
+   // Route::get('/delete/{id}', [BrandController::class, 'BrandDelete'])->name('delete.brand'); 
+    
+});
+
+// Admin Brand All Route Group End all.category
 
 
 
