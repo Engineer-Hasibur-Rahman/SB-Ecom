@@ -32,30 +32,25 @@
 						</thead>
 						<tbody>
 
-						{{-- 	@foreach ($brands as $item)
+							@foreach ($categorys as $item)
 							<tr>					
 
 								
-								<td>  {{ $item->brand_name }} </td>
+								<td>  <i class="{{ $item->category_icon }}"></i> </td>
+
+								<td>{{  $item->category_name }}</td>
 
 								<td>
 
-								<img src="{{ asset($item->brand_image) }}" height="80px;" width="80px;">
+									<a href="{{ route('edit.category', $item->id)  }}"   >  <i class="fa fa-edit btn btn-success"></i> </a>
 
-
-								</td>
-
-								<td>
-
-									<a href="{{ route('edit.brand', $item->id)  }}"   > Edit </a>
-
-									<a href="{{ route('delete.brand', $item->id ) }}">Delete</a>
+									<a href="{{ route('delete.category', $item->id ) }}"> <i class="fa fa-trash btn btn-danger"></i></a>
 								 </td>
 
 														
 							</tr>
 
-								@endforeach	 --}}
+								@endforeach	
 
 						</tbody>
 					  </table>
@@ -81,7 +76,7 @@
 				<div class="box-body">
     
 					    
-             <form action= "{{  route('category.store') }}" method="POST" enctype="multipart/form-data" >
+             <form action= "{{  route('category.store') }}" method="POST"  >
 				  @csrf
 
 

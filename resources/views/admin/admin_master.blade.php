@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
+   {{--  <meta name="author" content=""> --}}
+     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="../images/favicon.ico">
 
     <title>Shop Now</title>
@@ -14,11 +15,18 @@
 	<link rel="stylesheet" href="{{ asset('backend/css/vendors_css.css') }}">
 	  
 	<!-- Style-->  
-	<link rel="stylesheet" href="{{ asset('backend/css/style.css ')}} ">
-	<link rel="stylesheet" href="{{ asset('backend/css/skin_color.css ')}} ">
+	<link rel="stylesheet" href="{{ asset('backend/css/style.css ') }} ">
+	<link rel="stylesheet" href="{{ asset('backend/css/skin_color.css')}} ">
   
   {{-- For toster sms  --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+
+
 
   </head>
 
@@ -107,5 +115,43 @@
 
   </script>
 	
+
+
+
+
+
+
+
+
+{{-- <script type="text/javascript"> 
+
+    $('button#deleteButton').on('click', function(e){
+var name = $(this).data('id');
+e.preventDefault();
+swal({
+    title: "Careful!",
+    text: "Are you sure you want to delete "+name+"?",
+    icon: "warning",
+    dangerMode: true,
+    buttons: {
+      cancel: "Exit",
+      confirm: "Confirm",
+    },
+})
+.then ((willDelete) => {
+    if (willDelete) {
+       $(this).closest("form").submit();
+    }
+});
+});
+</script>  --}}
+
+
+
+
+
+
+
+
 </body>
 </html>

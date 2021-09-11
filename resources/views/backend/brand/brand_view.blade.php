@@ -50,10 +50,12 @@
 									<a href="{{ route('edit.brand', $item->id)  }}"   > Edit </a>
 
 									<a href="{{ route('delete.brand', $item->id ) }}">Delete</a>
+
+								{{-- 	<button type="submit" id="deleteButton" data-name="{{ $item->id }}" class="btn btn-xs btn-danger">Delete</button> --}}
 								 </td>
 
 														
-							</tr>
+							</tr> 
 
 								@endforeach	
 
