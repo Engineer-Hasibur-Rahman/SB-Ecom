@@ -12,9 +12,9 @@
  
 
 		
+  <div  class="col-3"></div>
 
-
-			<div class="col-8">
+			<div class="col-6">
 			<div class="box">
 				<div class="box-header with-border">
 				  <h3 class="box-title">Category Edit</h3>
@@ -68,7 +68,10 @@
 			</div>
 
 
-			</div>
+			</div> 
+			{{-- col-6 end  --}}
+
+			<div  class="col-3"></div>
 		
 
 

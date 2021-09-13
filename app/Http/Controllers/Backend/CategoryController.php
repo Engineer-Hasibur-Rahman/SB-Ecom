@@ -21,33 +21,34 @@ class CategoryController extends Controller
   // Category Store 
 
 
-     public function CategoryStore(Request $request){
-
-
+    // store Category
+  public function CategoryStore(Request $request){   
+      
     // validation 
         $request->validate([
             'category_name' => 'required',         
-            'category_icon' => 'required',       
+                 
           ],[ 
-            'category_name.required' => 'Input Category Name'
+            'category_name.required' => 'Input category_name'
           ]);
-
-
-       // category Insert    
+       
+       // Brand Insert    
           Category::insert([
 
-           'category_name' => $request->category_name,     
-           'category_slug' => strtolower(str_replace(' ', '-', $request->category_name)),          
-           'category_icon' => $request->category_icon
-
+           'category_name' => $request->category_name,    
+           'category_icon' => $request->category_icon, 
+           'category_slug' => strtolower(str_replace(' ', '-', $request->category_name))
+           
           ]); 
 
           $notification = array(
-            'message' =>  'Category Add Sucessyfully',
+            'message' =>  'Category Add Sucessyfuly',
             'alert-type' => 'success'
         ); 
 
-        return redirect()->back()->with($notification);          
+        return redirect()->back()->with($notification);
+
+          
 
   } // end method 
 

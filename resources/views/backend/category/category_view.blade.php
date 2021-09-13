@@ -76,44 +76,39 @@
 				<div class="box-body">
     
 					    
-             <form action= "{{  route('category.store') }}" method="POST"  >
-				  @csrf
+               <form action="{{ route('store.category') }}" method="POST" enctype="multipart/form-data" >
+                  @csrf
 
-
-
-
-				   <div class="form-group" >
-                   	<label>Category Icon</label>
-	                		<input type="text"  name="category_icon" class="form-control" > 
-
-	                		@error('category_icon')
- 						  <strong style="color: red">{{ $message }}</strong>	
-	                		@enderror
-
-	               </div>
-
-
-
-		              <div class="form-group">
-			               <label>Category Name</label>
-		                   <input type="text"  name="category_name" class="form-control" >
-		          
-		                   @error('category_name')
-		                     
-		                       <strong style="color: red">{{ $message }}</strong>	
-		                      
-		                   @enderror
-
-			           </div>
-
+                <div class="form-group">
+                  <h5>Category Name <span class="text-danger">*</span></h5>
+                  <div class="controls">
+                    <input type="text" name="category_name" class="form-control">
                   
+                    @error('category_name')
+                   <strong class="text-danger">{{ $message }}</strong>	
+                    </span>
+                @enderror
 
+                    </div>
+                </div>
 
-                       <div class="text-xs-right">
-                            <input type="submit" class="btn btn-rounded btn-info"  value="Add Category" >
-                        </div>
+                <div class="form-group">
+                  <h5>Category Icon <span class="text-danger">*</span></h5>
+                  <div class="controls">
+                    <input type="text" name="category_icon" class="form-control" >
+                    @error('category_icon')
+                    <strong class="text-danger">{{ $message }}</strong>	
+                     </span>
+                 @enderror
+                  	
 
-				</form> 
+                    </div>
+                </div>
+
+                <input type="submit"  class="btn btn-rounded btn-info"  value="Add Category">
+              </div>
+
+            </form> 
 
 				</div>
 			</div>
