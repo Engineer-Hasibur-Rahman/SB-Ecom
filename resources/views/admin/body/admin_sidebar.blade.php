@@ -69,6 +69,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{  route('add.product') }}"><i class="ti-more"></i>Add Product</a></li>
+            <li><a href="{{  route('all.product') }}"><i class="ti-more"></i>All Product</a></li>
 
           </ul>
         </li> 

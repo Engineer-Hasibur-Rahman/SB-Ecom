@@ -22,7 +22,11 @@
       <div class="box-body">
         <div class="row">
         <div class="col">
-          <form novalidate>
+
+
+
+         <form method="post" action="{{ route('product-store') }}" enctype="multipart/form-data" >
+                 @csrf
 
 
 
@@ -146,32 +150,58 @@
 
                             <div class="row">  
 
-                          <div class="col-md-3">      
+                          <div class="col-md-4">      
                             <div class="form-group">
                                 <h6>Product Tags<span class="text-danger">*</span></h6>
                                 <div class="controls">
-                                    <input type="number" name="product_tags" class="form-control" > </div>
+                                
+
+                                     <input type="text" name="product_tags" class="form-control" value="Boys, Girls" data-role="tagsinput" >
+                                   </div>
                             </div>
                             </div>  {{-- end col-md-3 --}}  
 
-                       <div class="col-md-3">
+                       <div class="col-md-4">
                             <div class="form-group">
                                 <h6>Product Size <span class="text-danger">*</span></h6>
                                 <div class="controls">
-                                    <input type="number" name="product_size" class="form-control" > </div>
+                                    {{-- <input type="text" name="product_size" class="form-control" > </div> --}}
+
+                             <input type="text" name="product_size" class="form-control" value="30" data-role="tagsinput" >
+
+                           </div>
+
                             </div>
                         </div>  {{-- end col-md-3 --}}    
 
-                         <div class="col-md-2">
+                         <div class="col-md-4">
                               <div class="form-group">
                                 <h5>Product Color<span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="number" name="product_color" class="form-control" > </div>
+                                 {{--    <input type="text" name="product_color" class="form-control" > </div> --}}
+
+                                       <input type="text" name="product_color" class="form-control" value="Red,Green,Black" data-role="tagsinput" >
+
+                                     </div>
                             </div>
                          </div>  {{-- end col-md-3 --}}
 
                          
-                         <div class="col-md-2">
+                      
+
+                         
+                         
+
+                        </div> {{-- end row --}}
+
+
+
+
+
+
+                      <div class="row">   
+                         
+                         <div class="col-md-6">
                               <div class="form-group">
                                 <h5>Product Selling Price<span class="text-danger">*</span></h5>
                                 <div class="controls">
@@ -180,9 +210,9 @@
                          </div>  {{-- end col-md-3 --}}
 
                          
-                         <div class="col-md-2">
+                         <div class="col-md-6">
                               <div class="form-group">
-                                <h5>Product Discount Price<span class="text-danger">*</span></h5>
+                                <h5> Product Discount Price<span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <input type="number" name="discount_price" class="form-control" > </div>
                             </div>
@@ -195,13 +225,41 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                           <div class="row">  
 
                           <div class="col-md-6">      
                             <div class="form-group">
                                 <h6>Product Thambnail  Img<span class="text-danger">*</span></h6>
                                 <div class="controls">
-                                    <input type="number" name="product_thambnail" class="form-control" > </div>
+
+
+                                     <input type="file" name="product_thambnail" class="form-control" onChange="mainThamUrl(this)" >
+
+
+                                   <img src="" id="mainThmb">
+
+                                     </div>
+
+
+
+
+
                             </div>
                             </div>  {{-- end col-md-3 --}}  
 
@@ -209,7 +267,12 @@
                             <div class="form-group">
                                 <h6>Product Multiple Image <span class="text-danger">*</span></h6>
                                 <div class="controls">
-                                    <input type="number" name="product_size" class="form-control" > </div>
+
+                                     <input type="file" name="multi_img[]" class="form-control" multiple="" id="multiImg" >
+
+                              <div class="row" id="preview_img"></div>
+
+
                             </div>
                         </div>  {{-- end col-md-3 --}}  
 
@@ -221,7 +284,7 @@
                         <div class="form-group">
                             <h5>Product Short Description  <span class="text-danger">*</span></h5>
                             <div class="controls">
-                           <textarea name="short_descp_en" id="textarea" class="form-control"  placeholder="Textarea text"></textarea>     
+                           <textarea name="product_short_descp" id="textarea" class="form-control"  placeholder="Textarea text"></textarea>     
                              </div>
                            </div>
                          </div> <!-- end col md 6 -->
@@ -230,7 +293,7 @@
                      <div class="form-group">
                        <h5>Product Long Description <span class="text-danger">*</span></h5>
                          <div class="controls">
-                    <textarea name="long_descp_en" id="textarea" class="form-control"  placeholder="Textarea text"></textarea>     
+                    <textarea name="product_long_descp" id="textarea" class="form-control"  placeholder="Textarea text"></textarea>     
                  </div>
                </div>
             </div> <!-- end col md 6 --> 
@@ -317,7 +380,7 @@
                     dataType:"json",
                     success:function(data) {
 
-                           $('select[name="subsubcategory_id"]').html('');
+                            $('select[name="subsubcategory_id"]').html('');
 
                        var d =$('select[name="subcategory_id"]').empty();
                           $.each(data, function(key, value){
@@ -358,6 +421,56 @@
 
     </script>
 
+
+
+    {{-- Product img --}}
+    <script type="text/javascript">
+      function mainThamUrl(input){
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function(e){
+            $('#mainThmb').attr('src',e.target.result).width(80).height(80);
+          };
+          reader.readAsDataURL(input.files[0]);
+        }
+      } 
+    </script>
+
+
+
+
+
+  {{-- Multi Img --}}
+
+  <script>
+   
+    $(document).ready(function(){
+     $('#multiImg').on('change', function(){ //on file input change
+        if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
+        {
+            var data = $(this)[0].files; //this file data
+             
+            $.each(data, function(index, file){ //loop though each file
+                if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
+                    var fRead = new FileReader(); //new filereader
+                    fRead.onload = (function(file){ //trigger function on successful read
+                    return function(e) {
+                        var img = $('<img/>').addClass('thumb').attr('src', e.target.result) .width(80)
+                    .height(80); //create image element 
+                        $('#preview_img').append(img); //append image to output element
+                    };
+                    })(file);
+                    fRead.readAsDataURL(file); //URL representing the file's data.
+                }
+            });
+             
+        }else{
+            alert("Your browser doesn't support File API!"); //if File API is absent
+        }
+     });
+    });
+     
+    </script>
 
 
 

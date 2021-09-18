@@ -73,6 +73,8 @@
 	<script src="{{ asset('backend/js/template.js ')}}"></script>
 	<script src="{{ asset('backend/js/pages/dashboard.js ')}}"></script>
 	
+{{-- Input Color --}}
+<script src="{{ asset('../assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js')  }}"></script>
 
 
 <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js')}}"></script>
