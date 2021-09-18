@@ -124,6 +124,21 @@ class SubCategoryController extends Controller
      
      } // end method
 
+
+  // for sub category auto select 
+      public function GetSubSubCategory($subcategory_id){
+
+        $subsubcat = SubSubCategory::where('subcategory_id',$subcategory_id)->orderBy('subsubcategory_name','ASC')->get();
+
+        return json_encode($subsubcat);
+     
+     } // end method
+
+
+
+
+
+
     // sub sub category store
      public function SubSubCategoryStore(Request $request){
 

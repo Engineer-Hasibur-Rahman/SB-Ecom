@@ -58,6 +58,21 @@
 		  
        
 
+
+      <li class="treeview">
+          <a href="#">
+            <i data-feather="message-circle"></i>
+            <span>Manage Product</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{  route('add.product') }}"><i class="ti-more"></i>Add Product</a></li>
+
+          </ul>
+        </li> 
+
         
       </ul>
     </section>
